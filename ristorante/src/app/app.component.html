@@ -1,20 +1,137 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Ristorante Il Fornello</title>
+  <link rel="stylesheet" href-"./../assets/bootstrap.css"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">  
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">Il Fornello</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><span class="fas fa-home"></span> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><span class="fas fa-info-circle"></span> About</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Menu
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav> 
+  <header class="header">
+    <div class="container">
+      <div>
+        <div>
+          <h1>Ristorante Il Fornello</h1>
+          <p>Simple, fresh ingredients, prepared and cooked with love and passion become truly great dishes, from wood-oven baked Neapolitan style pizzas to pastas, entrees!</p>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
+  </header>  
+  <div>
+    <div>
+      <div>
+        <p style="padding:20px;"></p>
+        <h3 align="center">Our Unique Culinary Creations</h3>
+      </div>
+      <div>
+        <h2>Fichipizza</h2>
+        <p>A unique combination of Mediterranean and Italian pizza, topped with Mascarphone, proscuitto, figs, grando panado, honey and arugula.</p>
+        <p><a href="#">More »</a></p>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p style="padding:20px;"></p>
+        <h3 align="center">This Month's Promotions</h3>
+      </div>
+      <div>
+        <h2>Weekend Grand Buffet</h2>
+        <p>Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person </p>
+        <p><a href="#">More »</a></p>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p style="padding:20px;"></p>
+        <h3 align="center">Meet our Culinary Specialists</h3>
+      </div>
+      <div>
+        <h2>Tommy McHugh</h2>
+        <h4>Executive Chef</h4>
+        <p>Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Mediterranean-Italian experiences. </p>
+        <p><a href="#">More »</a></p>
+      </div>
+    </div>
+  </div>
+  
+  <footer>  
+    <div>
+      <div>             
+        <div>
+          <h5>Links</h5>
+          <ul>
+            <li>
+              <a href="#"><span class="fas fa-home"></span>Home</a>
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Our Address</h5>
+          <address>
+            214, King Street West<br>
+            
+            Downtown, Toronto<br>
+            
+            ONTARIO<br>
+            
+            Tel.: +416 1234 5678<br>
+            
+            Fax: +416 8765 4321<br>
+            
+            Email: <a href="mailto:ilfornello@food.net">ilfornello@food.net</a>
+            
+          </address>
+        </div>
+        <div>
+          <div style="padding: 40px 10px;">
+            <a href="http://google.com/+">Google+</a>
+            <a href="http://www.facebook.com/profile.php?id=">Facebook</a>
+            <a href="http://www.linkedin.com/in/">LinkedIn</a>
+            <a href="http://twitter.com/">Twitter</a>
+            <a href="http://youtube.com/">YouTube</a>
+            <a href="mailto:">Mail</a>
+          </div>
+        </div>
+        <div>
+          <p style="padding:10px;"></p>
+          <p align="center">© Copyright 2015 Ristorante Il Fornello</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./../assets/js/bootstrap.min.js"></script>
+</body>
+</html>

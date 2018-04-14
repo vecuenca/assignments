@@ -1,0 +1,23 @@
+:root {
+  --secondary-nav-color: #212865;
+  --header-color: #7884cd;
+}
+
+.navbar {
+  background-color: #2f3ba1;
+  border-style: none none solid none;
+  border-width: 3px;
+  border-color: var(--secondary-nav-color);
+}
+
+.nav-item:hover {
+  background-color: #212865;
+}
+
+.header {
+  background-color: #7884cd;
+  color: white;
+}
+
+
+
