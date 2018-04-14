@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MENU } from './mock-menu';
 
 @Component({
   selector: 'app-root',
