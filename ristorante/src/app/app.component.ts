@@ -6,6 +6,8 @@ import { MENU } from './mock-menu';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'app';
+  menu = MENU;
 }

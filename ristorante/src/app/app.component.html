@@ -82,8 +82,16 @@
         <p><a href="#">More »</a></p>
       </div>
     </div>
-    <div class="row">
-      <h3>Our Menu</h3>
+    <div class="row menu-row" style="display:flex; flex-direction: column">
+      <h2>Our Menu</h2>
+      <ul class="list-unstyled">
+        <li *ngFor="let dish of menu">
+          <span class="dish-name">{{ dish.name }}</span>
+          <span class="dish-category">{{ dish.category }}</span>
+          <span>{{ dish.description }}</span>
+          <span>{{ dish.price | currency:'USD':true:'1.2-2' }}</span>
+        </li>
+      </ul>
     </div>
   </div>
   
