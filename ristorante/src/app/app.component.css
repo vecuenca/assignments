@@ -21,4 +21,22 @@
 }
 
 
+.footer {
+  background-color: lightgray;
+}
+
+.row {
+  border-bottom: 1px solid lightgray;
+  padding: 40px 0 40px 0;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+body, html{
+  margin:0;
+  padding:0;
+}
+
 
