@@ -19,7 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "./assets/css/bootstrap.css"
+        "./assets/css/bootstrap.css",
+        "./assets/css/bootstrap-social.css"
       ],
       "scripts": [
         "./assets/js/bootstrap.bundle.js"
