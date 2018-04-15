@@ -11,13 +11,13 @@ fs.readFile(args[0], "utf8", function(err, data) {
   }
 
   const sudokuSolution = parseInputFile(data);
+  const transposedSolution = transpose(sudokuSolution);
+
   console.log(`The supplied solution is:`);
   console.log(sudokuSolution);
   
   const areRowsValid = sudokuSolution.map(isArrValid)
     .reduce((acc, currentVal) => acc && currentVal, true);
-
-  const transposedSolution = sudokuSolution[0].map((x, i) => sudokuSolution.map(x => x[i]));
   const areColsValid = transposedSolution.map(isArrValid)
     .reduce((acc, currentVal) => acc && currentVal, true);
 
@@ -49,4 +49,13 @@ function isArrValid(arr) {
   let clone = arr.slice(0);
   return clone.length === validArr.length 
     && clone.sort().every((num, index) => num === validArr[index]);
+}
+
+/**
+ * "Rotates" the 2D array, such that the rows become the columns
+ * and vice versa
+ * @param {Array[]} matrix - 2D array to transpose
+ */
+function transpose(matrix) {
+  return matrix[0].map((x, i) => matrix.map(x => x[i]));
 }
