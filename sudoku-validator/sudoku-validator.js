@@ -1,34 +1,46 @@
+const fs = require("fs");
+if (process.env.NODE_ENV === "test") {
+  //console.log = function(){};
+}
+
 const sudokuValidator = (function() {
   return {
     validate: validate
   }
 
+  /**
+   * Validates the given Sudoku grid is a correct solution, i.e., that:
+   * - it is a 9 X 9 grid of integers
+   * - all of its rows, columns, and 3 X 3 subgrids contain the integers 1-9 exclusively
+   * @param {String} filename - location of text file with Sudoku grid
+   */
   function validate(filename) {
-    const fs = require("fs");
-    fs.readFile(filename, "utf8", function(err, data) {
-      if (err) {
-        throw `Error reading input file, error is ${err}`;
-      }
+    let data;
+    // we're just reading a small text file, 
+    // so using readFileSync is negligble for performance -
+    // otherwise would use readFile
+    try {
+      data = fs.readFileSync(filename, "utf8");
+    } catch (ex) {
+      throw new Error (`Error reading input file, exception is ${ex}`);
+    }
     
-      // Collect the rows, columns, and subgrids as arrays of arrays
-      const sudokuSolution = parseInputFile(data);
-      isGridValid(sudokuSolution);  
-      const transposedSolution = transpose(sudokuSolution);
-      const subGrids = mapSolutionToSubGrids(sudokuSolution);
-      
-      function reducer(acc, currentValue) {
-        return acc && currentValue;
-      }
-      const isSolutionCorrect = [sudokuSolution, transposedSolution, subGrids]
-        .map(arr => arr.map(isArrValid).reduce(reducer, true))
-        .reduce(reducer, true);
-      
-      console.log("The supplied solution is:");
-      console.log(sudokuSolution);
-      console.log(`This ${isSolutionCorrect === true ? "is" : "is not"} a correct solution.`);
+    // Collect the rows, columns, and subgrids as arrays of arrays
+    const sudokuSolution = parseInputFile(data);
+    isGridValid(sudokuSolution);  
+    const transposedSolution = transpose(sudokuSolution);
+    const subGrids = mapSolutionToSubGrids(sudokuSolution);
     
-      return isSolutionCorrect;
-    });
+    // ANDs together a collection of bools into one bool
+    function reducer(acc, currentValue) {
+      return acc && currentValue;
+    }
+
+    const isSolutionCorrect = [sudokuSolution, transposedSolution, subGrids]
+      .map(arr => arr.map(isArrValid).reduce(reducer, true))
+      .reduce(reducer, true);
+  
+    return isSolutionCorrect;
   }
   
   /**
@@ -103,13 +115,13 @@ const sudokuValidator = (function() {
    */
   function isGridValid(grid) {
     if (grid.length !== 9 || !grid.every(row => row.length === 9)) {
-      throw "Provided grid is not a 9x9 square";
+      throw new Error("Provided grid is not a 9x9 square");
     }
   
     grid.forEach(row => {
       row.forEach(val => {
         if (!Number.isInteger(val)) {
-          throw "Provided grid does not contain solely integers";
+          throw new Error("Provided grid does not contain solely integers");
         }
       })
     })
