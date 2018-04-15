@@ -27,15 +27,10 @@ const sudokuValidator = (function() {
     assertGridValid(sudokuSolution);  
     const transposedSolution = transpose(sudokuSolution);
     const subGrids = mapSolutionToSubGrids(sudokuSolution);
-    
-    // ANDs together a collection of bools into one bool
-    function reducer(acc, currentValue) {
-      return acc && currentValue;
-    }
 
-    const isSolutionCorrect = [sudokuSolution, transposedSolution, subGrids]
-      .map(arr => arr.map(isArrValid).reduce(reducer, true))
-      .reduce(reducer, true);
+    const isSolutionCorrect = [...sudokuSolution, ...transposedSolution, ...subGrids]
+      .map(isSudokuArrayValid)
+      .reduce((acc, currentValue) => acc && currentValue, true);
 
     console.log(isSolutionCorrect);
     return isSolutionCorrect;
@@ -61,7 +56,7 @@ const sudokuValidator = (function() {
    * @param {Number[]} arr - array of numbers
    * @returns {boolean}
    */
-  function isArrValid(arr) {
+  function isSudokuArrayValid(arr) {
     const validArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let clone = arr.slice(0);
     return clone.length === validArr.length 
