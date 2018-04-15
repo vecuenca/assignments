@@ -21,7 +21,7 @@ fs.readFile(args[0], "utf8", function(err, data) {
   const areColsValid = transposedSolution.map(isArrValid)
     .reduce((acc, currentVal) => acc && currentVal, true);
 
-  console.log(`This ${areRowsValid && areColsValid ? "is" : "is not"} a valid solution.`);
+  console.log(`This ${areRowsValid && areColsValid ? "is" : "is not"} a correct solution.`);
   return areRowsValid && areColsValid;
 });
 
