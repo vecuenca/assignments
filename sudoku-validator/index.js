@@ -5,13 +5,26 @@ if (args.length < 1) {
 }
 
 const fs = require("fs");
-
 fs.readFile(args[0], "utf8", function(err, data) {
   if (err) {
     return console.log(`Error reading input file, error is ${err}`);
   }
 
-  const sudoku = parseInputFile(data);
+  const sudokuSolution = parseInputFile(data);
+  
+  const areRowsValid = sudokuSolution.map(isArrValid)
+    .reduce((acc, currentVal) => {
+      return acc && currentVal
+    }, true);
+
+  const transposedSolution = sudokuSolution[0].map((x, i) => sudokuSolution.map(x => x[i]));
+  const areColsValid = transposedSolution.map(isArrValid)
+    .reduce((acc, currentVal) => {
+      return acc && currentVal
+    }, true);
+
+  console.log(areRowsValid && areColsValid);
+  return areRowsValid && areColsValid;
 });
 
 /**
@@ -26,4 +39,16 @@ function parseInputFile(data) {
   } catch (ex) {
     return console.log("Error parsing input file");
   }
+}
+
+const validArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+/**
+ * Check if supplied array is a valid Sudoku row/column,
+ * i.e., it contains the numbers 1-9 with no duplicates.
+ * @param {Number[]} arr - array of numbers
+ */
+function isArrValid(arr) {
+  let clone = arr.slice(0);
+  return clone.length === validArr.length 
+    && clone.sort().every((num, index) => num === validArr[index]);
 }
