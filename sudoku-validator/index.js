@@ -11,19 +11,17 @@ fs.readFile(args[0], "utf8", function(err, data) {
   }
 
   const sudokuSolution = parseInputFile(data);
+  console.log(`The supplied solution is:`);
+  console.log(sudokuSolution);
   
   const areRowsValid = sudokuSolution.map(isArrValid)
-    .reduce((acc, currentVal) => {
-      return acc && currentVal
-    }, true);
+    .reduce((acc, currentVal) => acc && currentVal, true);
 
   const transposedSolution = sudokuSolution[0].map((x, i) => sudokuSolution.map(x => x[i]));
   const areColsValid = transposedSolution.map(isArrValid)
-    .reduce((acc, currentVal) => {
-      return acc && currentVal
-    }, true);
+    .reduce((acc, currentVal) => acc && currentVal, true);
 
-  console.log(areRowsValid && areColsValid);
+  console.log(`This ${areRowsValid && areColsValid ? "is" : "is not"} a valid solution.`);
   return areRowsValid && areColsValid;
 });
 
