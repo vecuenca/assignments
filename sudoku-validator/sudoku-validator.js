@@ -1,7 +1,4 @@
 const fs = require("fs");
-if (process.env.NODE_ENV === "test") {
-  //console.log = function(){};
-}
 
 const sudokuValidator = (function() {
   return {
@@ -27,7 +24,7 @@ const sudokuValidator = (function() {
     
     // Collect the rows, columns, and subgrids as arrays of arrays
     const sudokuSolution = parseInputFile(data);
-    isGridValid(sudokuSolution);  
+    assertGridValid(sudokuSolution);  
     const transposedSolution = transpose(sudokuSolution);
     const subGrids = mapSolutionToSubGrids(sudokuSolution);
     
@@ -39,7 +36,8 @@ const sudokuValidator = (function() {
     const isSolutionCorrect = [sudokuSolution, transposedSolution, subGrids]
       .map(arr => arr.map(isArrValid).reduce(reducer, true))
       .reduce(reducer, true);
-  
+
+    console.log(isSolutionCorrect);
     return isSolutionCorrect;
   }
   
@@ -111,9 +109,8 @@ const sudokuValidator = (function() {
    * - it contains all integers
    * Throws appropriate exceptions if this is not the case
    * @param {Number[]} grid - a Sudoku grid
-   * @returns {Number[]} the same grid, if valid
    */
-  function isGridValid(grid) {
+  function assertGridValid(grid) {
     if (grid.length !== 9 || !grid.every(row => row.length === 9)) {
       throw new Error("Provided grid is not a 9x9 square");
     }
@@ -125,8 +122,6 @@ const sudokuValidator = (function() {
         }
       })
     })
-  
-    return grid;
   }
 })();
 
