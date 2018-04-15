@@ -1,13 +1,13 @@
 const args = process.argv.slice(2);
 
 if (args.length < 1) {
-  return console.log("Usage: node index.js input_filepath");
+  throw "Usage: node index.js input_filepath";
 }
 
 const fs = require("fs");
 fs.readFile(args[0], "utf8", function(err, data) {
   if (err) {
-    return console.log(`Error reading input file, error is ${err}`);
+    throw `Error reading input file, error is ${err}`;
   }
 
   const sudokuSolution = parseInputFile(data);
@@ -35,7 +35,7 @@ function parseInputFile(data) {
       .map(x => x.replace(/\r+/, ""))
       .map(row => row.split("").map(num => Number(num)));
   } catch (ex) {
-    return console.log("Error parsing input file");
+    throw "Error parsing input file";
   }
 }
 
